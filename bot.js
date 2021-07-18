@@ -28,11 +28,11 @@ bot.command("start", (msg, reply, next) => {
     reply.text('Я буду присылать статистику твоей каждой сыгранной игры.')
 })
 
-bot.text((msg, reply, next) => {
+bot.text( async (msg, reply, next) => {
     var player = msg.text
     if (msg.text == "Рудя") player = '120202499'; if (msg.text == "Антон") player = '97938416'
     if (msg.text == "Грызля") player = '115455869'; if (msg.text == "Юрон") player = '93442227'
-    reply.text('loading.')
+    await reply.text('loading.')
     loading.forEach(load => {
         reply.editText(msg.id + 1, load)
     })
