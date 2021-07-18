@@ -1,6 +1,6 @@
 const botgram = require("botgram")
 const request = require('request')
-const bot = botgram("1915366945:AAEwTu7T3G6A8ooESb4jSdfpDQcogsAHxJQ")
+const bot = botgram("1883716013:AAF6aaTD5CntA2t7IeL3VGfdBmpqQuSCYV8")
 
 var key = [
     [ { text: "Рудя \u{1F92C}"}, {text: "Грызля \u{1F921}"} ],
