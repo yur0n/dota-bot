@@ -10,16 +10,16 @@ var key = [
 const loading = ['loading..', 'loading...', 'loading....', 'loading.....', 'loading......']
 
 const stats = (reply, msg, response) => {
+    if (response.body[0].kills <= response.body[0].deaths) reply.text('Слабак!')
+    if (response.body[0].kills > response.body[0].deaths) reply.text('А ты хорош, продолжай!')
     reply.text('Так же ты нанёс ' + response.body[0].hero_damage + ' урона по героям, ' + response.body[0].tower_damage + 
                ' урона по строениям, похилил на ' + response.body[0].hero_healing + ' хп и получал ' + 
                response.body[0].gold_per_min + ' золота/мин с ' + response.body[0].last_hits + ' ластхитами.')
-            if (response.body[0].kills <= response.body[0].deaths) reply.text('Слабак!')
-            if (response.body[0].kills > response.body[0].deaths) reply.text('А ты хорош, продолжай!')
-            if ((response.body[0].player_slot <= 4 && response.body[0].radiant_win == true) || 
-                  (response.body[0].player_slot > 4 && response.body[0].radiant_win == false)) reply.text("Ты победил! \u{1F638}")
-            if ((response.body[0].player_slot > 4 && response.body[0].radiant_win == true) || 
-                  (response.body[0].player_slot <= 4 && response.body[0].radiant_win == false)) reply.text("Ты проиграл! \u{1F63F}")
-            if (response.body[0].leaver_status == 1) reply.text('Хренов ливер!')
+    if ((response.body[0].player_slot <= 4 && response.body[0].radiant_win == true) || 
+        (response.body[0].player_slot > 4 && response.body[0].radiant_win == false)) reply.text("Ты победил! \u{1F638}")
+    if ((response.body[0].player_slot > 4 && response.body[0].radiant_win == true) || 
+        (response.body[0].player_slot <= 4 && response.body[0].radiant_win == false)) reply.text("Ты проиграл! \u{1F63F}")
+    if (response.body[0].leaver_status == 1) reply.text('Ливер!')
 }
 
 bot.command("start", (msg, reply, next) => {
