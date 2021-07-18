@@ -1,10 +1,10 @@
 const botgram = require("botgram")
 const request = require('request')
-const bot = botgram("1883716013:AAF6aaTD5CntA2t7IeL3VGfdBmpqQuSCYV8")
+const bot = botgram("1915366945:AAEwTu7T3G6A8ooESb4jSdfpDQcogsAHxJQ")
 
 var key = [
-    [ { text: "Рудя"}, {text: 'Грызля'} ],
-    [ { text: "Антон"}, {text: 'Юрон'} ]
+    [ { text: "Рудя \u{1F92C}"}, {text: "Грызля \u{1F921}"} ],
+    [ { text: "Антон \u{1F913}"}, {text: "Юрон \u{1F934}"} ]
 ]
 
 const loading = ['loading..', 'loading...', 'loading....', 'loading.....', 'loading......']
@@ -22,6 +22,7 @@ const stats = (reply, msg, response) => {
     if (response.body[0].leaver_status == 1) reply.text('Ливер!')
 }
 
+
 bot.command("start", (msg, reply, next) => {
     console.log(msg.from.username, msg.from.name, msg.from.id)
     reply.keyboard(key, true, true).text("Ты кто? Введи свой Steam32 ID, если тебя нет в списке.")
@@ -30,8 +31,8 @@ bot.command("start", (msg, reply, next) => {
 
 bot.text( async (msg, reply, next) => {
     var player = msg.text
-    if (msg.text == "Рудя") player = '120202499'; if (msg.text == "Антон") player = '97938416'
-    if (msg.text == "Грызля") player = '115455869'; if (msg.text == "Юрон") player = '93442227'
+    if (msg.text == "Рудя \u{1F92C}") player = '120202499'; if (msg.text == "Антон \u{1F913}") player = '97938416'
+    if (msg.text == "Грызля \u{1F921}") player = '115455869'; if (msg.text == "Юрон \u{1F934}") player = '93442227'
     await reply.text('loading.')
     loading.forEach(load => {
         reply.editText(msg.id + 1, load)
